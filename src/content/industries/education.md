@@ -40,4 +40,4 @@ Streamlined fee collection, scholarship tracking, and financial reporting for in
 
 ## Our Education Product: Elma
 
-We've built Elma — our own AI-powered all-in-one education management platform — purpose-built for educational institutions from small schools to large universities. [Explore Elma](https://elma.aitsgenesis.com)
+We've built Elma — our own AI-powered all-in-one education management platform — purpose-built for educational institutions from small schools to large universities. [Explore Elma](https://elma.aits.mehaxan.com)

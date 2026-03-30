@@ -40,4 +40,4 @@ Coding assistance, claims submission, payer connectivity, denial management, and
 
 ## Our Healthcare Product: Doctoraloy
 
-Doctoraloy is our all-in-one platform built specifically for doctors — covering practice management, patient records, appointments, and billing in a single integrated system. [Explore Doctoraloy](https://doctoraloy.aitsgenesis.com)
+Doctoraloy is our all-in-one platform built specifically for doctors — covering practice management, patient records, appointments, and billing in a single integrated system. [Explore Doctoraloy](https://doctoraloy.aits.mehaxan.com)

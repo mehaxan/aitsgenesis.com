@@ -40,4 +40,4 @@ Subscription box, replenishment, and membership models with billing management, 
 
 ## Our E-commerce Product: Bonik Bazar
 
-Bonik Bazar is our AI-powered marketplace platform for Bonik subscribers — a dedicated space to sell, promote, and discover business goods. [Explore Bonik Bazar](https://bonik-bazaar.aitsgenesis.com)
+Bonik Bazar is our AI-powered marketplace platform for Bonik subscribers — a dedicated space to sell, promote, and discover business goods. [Explore Bonik Bazar](https://bonik-bazaar.aits.mehaxan.com)

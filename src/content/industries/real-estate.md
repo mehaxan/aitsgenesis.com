@@ -40,4 +40,4 @@ Market value analytics, rental yield benchmarking, portfolio performance reporti
 
 ## Our Real Estate Product: Jomidar
 
-Jomidar is our purpose-built solution for homeowners who rent their properties — covering tenant management, rent collection, maintenance, and lease documentation. [Explore Jomidar](https://jomidar.aitsgenesis.com)
+Jomidar is our purpose-built solution for homeowners who rent their properties — covering tenant management, rent collection, maintenance, and lease documentation. [Explore Jomidar](https://jomidar.aits.mehaxan.com)
