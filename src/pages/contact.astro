@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const contactItems = [
+  {
+    icon: "✉️",
+    label: "Email",
+    value: "hello@aitsgenesis.com",
+    href: "mailto:hello@aitsgenesis.com",
+  },
+  {
+    icon: "💼",
+    label: "LinkedIn",
+    value: "linkedin.com/company/aitsgenesis",
+    href: "https://www.linkedin.com/company/aitsgenesis",
+  },
+  {
+    icon: "🐦",
+    label: "Twitter / X",
+    value: "@aitsgenesis",
+    href: "https://twitter.com/aitsgenesis",
+  },
+];
+---
+<BaseLayout
+  title="Contact Us"
+  description="Get in touch with AITS Genesis. Tell us about your project, request a product demo, or discuss a partnership. We respond within 24 hours."
+>
+
+  <!-- Header -->
+  <section class="bg-white border-b border-slate-200 py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">Get in Touch</p>
+      <h1 class="text-4xl sm:text-5xl font-display font-bold text-slate-900">Let's Start a Conversation</h1>
+      <p class="mt-4 text-xl text-slate-600 max-w-xl mx-auto">
+        Whether you have a project brief, a product question, or just want to explore what's possible — we're here.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2-column layout -->
+  <section class="py-16 md:py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Left: form -->
+      <div>
+        <ContactForm />
+      </div>
+
+      <!-- Right: contact info -->
+      <div class="space-y-8 lg:pt-4">
+        <div>
+          <h2 class="text-2xl font-display font-bold text-slate-900 mb-2">Other Ways to Reach Us</h2>
+          <p class="text-slate-600">We typically respond to all enquiries within one business day.</p>
+        </div>
+
+        <div class="space-y-4">
+          {contactItems.map(c => (
+            <a
+              href={c.href}
+              target={c.href.startsWith("http") ? "_blank" : undefined}
+              rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              class="flex items-center gap-4 bg-white border border-slate-200 rounded-2xl px-5 py-4 hover:border-blue-300 hover:shadow-sm transition-all group"
+            >
+              <span class="text-2xl flex-shrink-0">{c.icon}</span>
+              <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">{c.label}</p>
+                <p class="text-slate-800 font-medium group-hover:text-blue-600 transition-colors">{c.value}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <!-- Response time promise -->
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl px-5 py-5">
+          <h3 class="font-semibold text-blue-900 mb-1">What happens next?</h3>
+          <ol class="space-y-2 mt-3">
+            {[
+              "We review your message and assign the right person.",
+              "You receive a personalised response within 1 business day.",
+              "If relevant, we schedule a discovery call — no commitment needed.",
+            ].map((step, i) => (
+              <li class="flex items-start gap-2.5 text-sm text-blue-800">
+                <span class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-200 text-blue-700 text-xs font-bold flex items-center justify-center">{i + 1}</span>
+                {step}
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Service areas -->
+        <div>
+          <p class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">We Help With</p>
+          <div class="flex flex-wrap gap-2">
+            {[
+              "Custom Development", "AI Integration", "Product Demo", "Team Augmentation",
+              "Technical Consulting", "Partnership", "Career Enquiry",
+            ].map(tag => (
+              <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-xs font-medium rounded-lg">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

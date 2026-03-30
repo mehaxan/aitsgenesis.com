@@ -1,0 +1,91 @@
+---
+/**
+ * Icon component using Font Awesome 6 Free Solid (font/CSS mode)
+ * https://fontawesome.com — Font Awesome Free License
+ *
+ * Usage:  <Icon name="globe-alt" class="text-xl text-blue-600" />
+ * Accepts legacy Heroicon name aliases mapped internally to FA equivalents.
+ *
+ * Sizing: use Tailwind text-* classes or the `size` prop (px).
+ * w-N/h-N Tailwind classes are automatically converted to font-size.
+ */
+
+interface Props {
+  name: string;
+  class?: string;
+  /** Explicit pixel size. Falls back to deriving from a w-* Tailwind class. */
+  size?: number;
+  'aria-label'?: string;
+}
+
+const { name, class: cls = '', size, 'aria-label': ariaLabel } = Astro.props;
+
+/** Map legacy Heroicon names → Font Awesome 6 icon names */
+const iconMap: Record<string, string> = {
+  'globe-alt':           'globe',
+  'device-phone-mobile': 'mobile-screen',
+  'pencil-square':       'pen-to-square',
+  'user-group':          'users',
+  'code-bracket-square': 'code',
+  'cloud':               'cloud',
+  'shield-check':        'shield-halved',
+  'wrench-screwdriver':  'screwdriver-wrench',
+  'light-bulb':          'lightbulb',
+  'briefcase':           'briefcase',
+  'server-stack':        'server',
+  'cube-transparent':    'cube',
+  'eye':                 'eye',
+  'viewfinder-circle':   'crosshairs',
+  'sparkles':            'wand-magic-sparkles',
+  'cpu-chip':            'microchip',
+  'chart-bar':           'chart-bar',
+  'arrows-right-left':   'arrows-left-right',
+  'wifi':                'wifi',
+  'circle-stack':        'database',
+  'cursor-arrow-rays':   'arrow-pointer',
+  'computer-desktop':    'desktop',
+  'academic-cap':        'graduation-cap',
+  'heart':               'heart',
+  'banknotes':           'money-bills',
+  'credit-card':         'credit-card',
+  'shopping-bag':        'bag-shopping',
+  'document-check':      'file-circle-check',
+  'truck':               'truck',
+  'signal':              'signal',
+  'video-camera':        'video',
+  'shopping-cart':       'cart-shopping',
+  'map':                 'map',
+  'bolt':                'bolt',
+  'beaker':              'flask',
+  'building-library':    'building-columns',
+  'cog-6-tooth':         'gear',
+  'building-office-2':   'building',
+  'map-pin':             'location-dot',
+  'wrench':              'wrench',
+  'rocket-launch':       'rocket',
+  'arrow-trending-up':   'arrow-trend-up',
+  'trophy':              'trophy',
+  'flag':                'flag',
+  'check-badge':         'circle-check',
+  'magnifying-glass':    'magnifying-glass',
+};
+
+const faName = iconMap[name] ?? name;
+
+// Derive px size from w-* Tailwind class (1 unit = 4px) when size prop is absent
+const wMatch = cls.match(/\bw-(\d+)\b/);
+const resolvedSize = size ?? (wMatch ? parseInt(wMatch[1], 10) * 4 : undefined);
+
+// Strip w-*/h-* — font icons scale via font-size, not box dimensions
+const cleanCls = cls.replace(/\b[wh]-\S+\s*/g, '').trim();
+
+const sizeStyle = resolvedSize
+  ? `font-size: ${resolvedSize}px; line-height: 1;`
+  : 'line-height: 1;';
+---
+<i
+  class={`fa-solid fa-${faName}${cleanCls ? ` ${cleanCls}` : ''}`}
+  style={sizeStyle}
+  aria-hidden={ariaLabel ? undefined : 'true'}
+  aria-label={ariaLabel}
+></i>

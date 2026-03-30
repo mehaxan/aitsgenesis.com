@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Icon from '../components/Icon.astro';
+
+const process = [
+  { step: "01", title: "Discovery", desc: "We start with deep discovery sessions to understand your business context, constraints, and goals — not just the feature list." },
+  { step: "02", title: "Architecture", desc: "Our architects propose a technical blueprint that's right-sized for today and extensible for tomorrow." },
+  { step: "03", title: "Agile Build", desc: "Bi-weekly sprints with working software delivered every cycle. You see, test, and shape the product throughout." },
+  { step: "04", title: "Launch & Scale", desc: "We handle DevOps, CI/CD, cloud infrastructure, and post-launch monitoring so you can focus on growth." },
+];
+
+const capabilities = [
+  { icon: "building-office-2", title: "Greenfield Applications", desc: "Full product development from idea to launch — web, mobile, backend APIs, and cloud infrastructure." },
+  { icon: "arrows-right-left", title: "Legacy Modernisation", desc: "Migrate monoliths to microservices, re-platform from on-premise to cloud, or refactor your codebase incrementally." },
+  { icon: "sparkles", title: "AI & ML Integration", desc: "Add intelligence to your workflows: predictive analytics, natural language interfaces, computer vision, or recommendation engines." },
+  { icon: "server-stack", title: "Systems Integration", desc: "Connect disparate systems — ERP, CRM, third-party APIs, IoT devices — with reliable, well-documented integration middleware." },
+  { icon: "device-phone-mobile", title: "Mobile Applications", desc: "Cross-platform (React Native) and native iOS/Android apps built with native performance expectations." },
+  { icon: "cog-6-tooth", title: "Platform Engineering", desc: "Kubernetes, Terraform, CI/CD pipelines, observability stacks — we build the platforms your developers love to use." },
+];
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Custom Software Solutions",
+  "url": "https://aitsgenesis.com/custom-solutions",
+  "provider": { "@type": "Organization", "name": "AITS Genesis" },
+  "description": "Bespoke software development services tailored to unique business requirements.",
+};
+---
+<BaseLayout
+  title="Custom Software Solutions"
+  description="When off-the-shelf software isn't enough, AITS Genesis engineers bespoke solutions tailored precisely to your business. Greenfield builds, legacy modernisation, AI integration, and more."
+  jsonLD={jsonLD}
+>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-white border-b border-slate-200 py-20 md:py-28">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_#EEF2FF_0%,_transparent_60%)]"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Custom Solutions</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-slate-900 leading-tight">
+          Your Problem Is Unique. Your Software Should Be Too.
+        </h1>
+        <p class="mt-6 text-xl text-slate-600 leading-relaxed">
+          Generic software solves generic problems. When your competitive advantage depends on how your technology works, you need software built specifically for you — from the ground up, or modernised from an existing foundation.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row items-start gap-4">
+          <a href="/contact" class="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20 text-sm">
+            Discuss Your Project
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/services" class="inline-flex items-center gap-2 px-7 py-3.5 border border-slate-300 text-slate-700 font-semibold rounded-xl hover:border-indigo-400 hover:text-indigo-600 transition-colors text-sm">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="py-20 md:py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="What We Build"
+        title="Custom Software for Every Challenge"
+        subtitle="Our custom software capability spans the full spectrum — from new product development to complex system integration and AI augmentation."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {capabilities.map(c => (
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-md transition-shadow">
+            <div class="text-indigo-600">
+              <Icon name={c.icon} class="w-7 h-7" />
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-slate-900">{c.title}</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-20 md:py-28 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Our Approach"
+        title="A Process Designed for Predictability"
+        subtitle="We've refined our delivery methodology across 500+ projects. Here's how a custom engagement typically unfolds."
+      />
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4">
+        {process.map(p => (
+          <div class="relative">
+            <div class="text-5xl font-display font-bold text-slate-100 mb-3">{p.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{p.title}</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why AITS Genesis for custom -->
+  <section class="py-20 md:py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Why Us</p>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 leading-tight">
+            We Think Like Product Owners, Not Ticket-Closers
+          </h2>
+          <p class="mt-5 text-slate-600 leading-relaxed">
+            Because we build and maintain our own products, we understand what it means to own software long-term. We design for maintainability, document for future teams, and challenge requirements that don't serve the outcome.
+          </p>
+          <ul class="mt-6 space-y-3">
+            {[
+              "Full IP ownership transferred to you upon project completion",
+              "No vendor lock-in — open standards and portable architectures",
+              "Dedicated project manager embedded in your timezone",
+              "Post-launch support and SLA options available",
+              "Fixed-price or time-and-materials — we work your way",
+            ].map(item => (
+              <li class="flex items-start gap-2.5 text-slate-600 text-sm">
+                <svg class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { label: "Projects Delivered", value: "500+" },
+            { label: "Client Satisfaction", value: "98%" },
+            { label: "Average Team Size", value: "4–12" },
+            { label: "Sprint Cadence", value: "2 weeks" },
+          ].map(s => (
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 text-center">
+              <p class="text-3xl font-display font-bold text-indigo-600">{s.value}</p>
+              <p class="mt-1 text-sm text-slate-500">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let's Scope Your Custom Project"
+    subtitle="Tell us about your challenge. We'll respond with a discovery proposal within 24 hours."
+    primaryLabel="Start the Conversation"
+    primaryHref="/contact"
+    secondaryLabel="Browse Our Services"
+    secondaryHref="/services"
+  />
+</BaseLayout>

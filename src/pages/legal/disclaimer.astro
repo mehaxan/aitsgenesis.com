@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const lastUpdated = "January 1, 2025";
+---
+<BaseLayout
+  title="Disclaimer"
+  description="AITS Genesis Disclaimer — limitations on the information provided on this website."
+>
+  <section class="bg-white border-b border-slate-200 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Legal", href: "#" }, { label: "Disclaimer" }]} />
+      <h1 class="text-3xl md:text-4xl font-display font-bold text-slate-900 mt-6">Disclaimer</h1>
+      <p class="mt-2 text-slate-500 text-sm">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="py-14 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-12 prose prose-slate max-w-none">
+        <h2>General Information</h2>
+        <p>The information on this website (<strong>aitsgenesis.com</strong>) is provided for general informational purposes only. While we strive to keep the content accurate and up to date, AITS Genesis makes no representations or warranties of any kind — express or implied — about the completeness, accuracy, reliability, suitability, or availability of the information.</p>
+
+        <h2>No Professional Advice</h2>
+        <p>The content on this website does not constitute professional technical, legal, financial, or business advice. Before making any decisions based on information found here, you should consult a qualified professional.</p>
+
+        <h2>Product Information</h2>
+        <p>Descriptions of our software products and services are provided for informational and marketing purposes. Product features, pricing, availability, and technical specifications are subject to change without notice. Please contact us directly or visit the respective product website for current and accurate product information.</p>
+
+        <h2>External Links</h2>
+        <p>This website contains links to external sites not operated by AITS Genesis. We have no control over the content and nature of those sites. The inclusion of any link does not imply endorsement of the site or its contents. We cannot be held responsible for the privacy practices of external websites.</p>
+
+        <h2>Limitation of Liability</h2>
+        <p>In no event will AITS Genesis be liable for any loss or damage — including, without limitation, indirect or consequential loss or damage — arising from the use of, or inability to use, this website or its contents.</p>
+
+        <h2>Accuracy of Case Studies and Testimonials</h2>
+        <p>Any case studies, testimonials, or outcome descriptions on this website represent individual results and are not guarantees of future performance. Results vary based on many factors unique to each engagement.</p>
+
+        <h2>Changes</h2>
+        <p>We reserve the right to modify the content of this website and this Disclaimer at any time without notice. Your continued use of the website following any changes constitutes your acceptance of the updated Disclaimer.</p>
+
+        <h2>Contact</h2>
+        <p>If you have concerns about information published on this website, please contact us at <a href="mailto:legal@aitsgenesis.com">legal@aitsgenesis.com</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

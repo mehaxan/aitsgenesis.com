@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Icon from '../components/Icon.astro';
+import { products } from '../data/navigation';
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "AITS Genesis Products",
+  "url": "https://aitsgenesis.com/products",
+  "description": "Explore the six AI-powered software products built by AITS Genesis — covering healthcare, agriculture, legal, retail, and more.",
+};
+---
+<BaseLayout
+  title="Our Products"
+  description="Explore the six AI-powered software products built by AITS Genesis — covering healthcare, agriculture, legal, retail, and more. Each product is available as a cloud-based SaaS solution."
+  jsonLD={jsonLD}
+>
+
+  <!-- Hero -->
+  <section class="bg-white border-b border-slate-200 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">Our Product Suite</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-slate-900 leading-tight max-w-3xl mx-auto">
+        Six AI-Powered Products. Six Industries Transformed.
+      </h1>
+      <p class="mt-6 text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+        We built these products because no adequate solution existed. Each one is a purpose-built, cloud-native SaaS platform with AI at its core — deployed, maintained, and continuously improved by us.
+      </p>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="py-20 md:py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {products.map(p => <ProductCard {...p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why our products -->
+  <section class="py-20 md:py-28 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Why AITS Genesis Products"
+        title="Built to Last. Designed to Grow."
+        subtitle="Everything in our product line is engineered with the same standards we apply to custom enterprise software."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: "cloud", title: "Cloud-Native Architecture", desc: "Multi-tenant SaaS infrastructure built for scale, with 99.9% uptime SLA." },
+          { icon: "shield-check", title: "Enterprise-Grade Security", desc: "Role-based access control, data encryption at rest and in transit, audit trails." },
+          { icon: "sparkles", title: "AI at the Core", desc: "Not a bolt-on feature — AI capabilities are woven into every product's workflow." },
+          { icon: "arrows-right-left", title: "API-First Design", desc: "Every product exposes REST APIs so it integrates with your existing systems." },
+          { icon: "chart-bar", title: "Rich Analytics", desc: "Real-time dashboards and exportable reports so you always know what's happening." },
+          { icon: "wrench-screwdriver", title: "Dedicated Support", desc: "Product teams provide onboarding, training, and ongoing technical support." },
+        ].map(f => (
+          <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6 flex gap-4">
+            <div class="text-blue-600 flex-shrink-0 mt-0.5">
+              <Icon name={f.icon} class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-slate-900 mb-1">{f.title}</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Interested in a Product Demo?"
+    subtitle="See any product in action with a live demo tailored to your industry context."
+    primaryLabel="Request a Demo"
+    primaryHref="/contact"
+    secondaryLabel="Explore Our Services"
+    secondaryHref="/services"
+  />
+</BaseLayout>

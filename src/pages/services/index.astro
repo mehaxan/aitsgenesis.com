@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Icon from '../../components/Icon.astro';
+
+const entries = await getCollection('services');
+const sorted = entries.sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<BaseLayout
+  title="Software Development Services"
+  description="Comprehensive software development and technology services — web development, mobile apps, UI/UX design, cloud, DevOps, blockchain, AR/VR, and more."
+  activeNav="services"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
+      <div class="mt-6 max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">
+          Technology Services That Deliver Results
+        </h1>
+        <p class="mt-4 text-xl text-slate-600 leading-relaxed">
+          From web and mobile development to AI, cloud, and blockchain — we bring the full-spectrum technical capability needed to build, scale, and maintain modern digital products.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+    <SectionHeader
+      eyebrow="What We Do"
+      title="Our Service Offerings"
+      subtitle="13 specialised services, all under one roof — so you can partner with us across your entire digital journey."
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sorted.map(entry => {
+        const slug = entry.id.replace(/\.md$/, '');
+        return (
+          <a
+            href={`/services/${slug}`}
+            class="group block bg-white rounded-2xl border border-slate-200 p-6 hover:border-blue-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+          >
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors text-blue-600">
+              <Icon name={entry.data.icon} class="text-2xl" />
+            </div>
+            <h2 class="font-display font-semibold text-lg text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
+              {entry.data.title}
+            </h2>
+            <p class="text-sm text-slate-600 leading-relaxed line-clamp-3">
+              {entry.data.heroSubtitle}
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 mt-4">
+              Learn more
+              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <CTASection
+    title="Not Sure Which Service You Need?"
+    subtitle="Talk to our team and we'll help you identify the right engagement model for your challenge."
+    primaryLabel="Talk to Us"
+    primaryHref="/contact"
+    secondaryLabel="Custom Solutions"
+    secondaryHref="/custom-solutions"
+  />
+</BaseLayout>

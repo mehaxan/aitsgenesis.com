@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import SEOHead from '../components/SEOHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  jsonLD?: object;
+  activeNav?: string;
+}
+
+const { title, description, ogImage, ogType, noindex, jsonLD, activeNav } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={Astro.url.href}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+      jsonLD={jsonLD}
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="font-sans bg-white text-slate-900 antialiased">
+    <Header activeNav={activeNav} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

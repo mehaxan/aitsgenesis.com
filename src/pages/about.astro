@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Icon from '../components/Icon.astro';
+
+const values = [
+  {
+    icon: "check-badge",
+    title: "Client-First Mindset",
+    description: "We treat every project as if it were our own business. Your goals become our acceptance criteria.",
+  },
+  {
+    icon: "beaker",
+    title: "Engineering Rigor",
+    description: "We write clean, tested, documented code. We design for maintainability, not just launch day.",
+  },
+  {
+    icon: "rocket-launch",
+    title: "Speed Without Compromise",
+    description: "Agile delivery cycles mean you see progress weekly. Speed and quality are not trade-offs at AITS Genesis.",
+  },
+  {
+    icon: "heart",
+    title: "Long-Term Partnerships",
+    description: "Most of our clients come back for their next project. We earn trust through transparency and results.",
+  },
+];
+
+const milestones = [
+  { year: "Founded", label: "Bootstrapped with a clear vision: make great software accessible to every industry." },
+  { year: "Products", label: "Launched 6 AI-powered vertical SaaS products — from healthcare to agriculture." },
+  { year: "Team", label: "Grew to 50+ engineers, designers, and consultants across multiple disciplines." },
+  { year: "Global", label: "Serving clients across Southeast Asia, the Middle East, and beyond." },
+];
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About AITS Genesis",
+  "url": "https://aitsgenesis.com/about",
+  "description": "Learn about AITS Genesis — our mission, values, team, and journey building AI-powered software.",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "AITS Genesis",
+    "url": "https://aitsgenesis.com",
+  }
+};
+---
+<BaseLayout
+  title="About Us"
+  description="AITS Genesis is a software company on a mission to make intelligent software accessible across every industry. Learn about our story, values, and team."
+  jsonLD={jsonLD}
+>
+
+  <!-- Hero -->
+  <section class="bg-white border-b border-slate-200 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">About AITS Genesis</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-slate-900 leading-tight">
+          We Engineer the Software the Future Runs On
+        </h1>
+        <p class="mt-6 text-xl text-slate-600 leading-relaxed">
+          Founded to close the gap between cutting-edge technology and real-world business needs, AITS Genesis is a software company that builds AI-powered products and custom solutions for enterprises, SMEs, and ambitious startups.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission / Vision -->
+  <section class="py-20 md:py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10">
+      <div class="bg-white rounded-2xl border border-slate-200 p-8">
+        <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+          <Icon name="flag" class="w-5 h-5" />
+        </div>
+        <h2 class="text-2xl font-display font-bold text-slate-900 mb-3">Our Mission</h2>
+        <p class="text-slate-600 leading-relaxed">
+          To make intelligent, well-engineered software accessible to every business — regardless of size or sector — so that technology becomes a competitive advantage, not a bottleneck.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-200 p-8">
+        <div class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 mb-4">
+          <Icon name="magnifying-glass" class="w-5 h-5" />
+        </div>
+        <h2 class="text-2xl font-display font-bold text-slate-900 mb-3">Our Vision</h2>
+        <p class="text-slate-600 leading-relaxed">
+          A world where every organization — from local clinics to global logistics firms — operates on software that thinks, adapts, and grows with the business it serves.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story / Milestones -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">Our Journey</p>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 leading-tight">
+            Built From the Ground Up With Purpose
+          </h2>
+          <p class="mt-5 text-lg text-slate-600 leading-relaxed">
+            AITS Genesis was born from the belief that Bangladesh's technology talent deserved a platform to build world-class software products. We started small, stayed disciplined, and expanded deliberately — letting quality drive growth.
+          </p>
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            Today we operate across multiple verticals with a team of 50+ specialists who bring deep engineering expertise and genuine domain knowledge to every engagement.
+          </p>
+        </div>
+        <div class="space-y-6">
+          {milestones.map(m => (
+            <div class="flex gap-5 items-start">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-sm font-bold text-blue-600 uppercase tracking-wide">{m.year}</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-slate-200 self-stretch mt-1"></div>
+              <p class="text-slate-600 text-sm leading-relaxed">{m.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 md:py-28 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="What We Stand For"
+        title="Values That Drive Every Decision"
+        subtitle="Our culture is built around a set of principles that show up in our code, our communication, and our commitments."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map(v => (
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="text-blue-600 mb-4">
+              <Icon name={v.icon} class="w-7 h-7" />
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{v.title}</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">{v.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team placeholder -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <SectionHeader
+        eyebrow="Our Team"
+        title="50+ Engineers, Designers & Consultants"
+        subtitle="We're a distributed team of specialists united by a conviction that great software changes lives. Meet us."
+        centered
+      />
+      <div class="mt-8 inline-flex items-center gap-3 px-6 py-3 bg-blue-50 rounded-xl text-blue-700 text-sm font-medium">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <a href="https://www.linkedin.com/company/aitsgenesis" target="_blank" rel="noopener noreferrer">
+          Connect with us on LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Want to Work With Us or Join Our Team?"
+    subtitle="Whether you have a project in mind or a career to build — we'd love to hear from you."
+    primaryLabel="Discuss a Project"
+    primaryHref="/contact"
+    secondaryLabel="See Open Positions"
+    secondaryHref="/careers"
+  />
+</BaseLayout>

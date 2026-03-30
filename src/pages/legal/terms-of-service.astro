@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const lastUpdated = "January 1, 2025";
+---
+<BaseLayout
+  title="Terms of Service"
+  description="AITS Genesis Terms of Service — the agreement governing use of our website and software services."
+>
+  <section class="bg-white border-b border-slate-200 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Legal", href: "#" }, { label: "Terms of Service" }]} />
+      <h1 class="text-3xl md:text-4xl font-display font-bold text-slate-900 mt-6">Terms of Service</h1>
+      <p class="mt-2 text-slate-500 text-sm">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="py-14 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-12 prose prose-slate max-w-none">
+        <p>By accessing or using the website at <strong>aitsgenesis.com</strong> or any AITS Genesis products and services, you agree to be bound by these Terms of Service ("Terms"). Please read them carefully.</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>These Terms constitute a legally binding agreement between you ("User") and AITS Genesis. If you do not agree to these Terms, you must not use our website or services.</p>
+
+        <h2>2. Use of the Website</h2>
+        <p>You may use our website for lawful purposes only. You agree not to:</p>
+        <ul>
+          <li>Engage in any activity that violates applicable laws or regulations.</li>
+          <li>Transmit any unsolicited or unauthorized advertising or promotional material (spam).</li>
+          <li>Attempt to gain unauthorised access to our systems or data.</li>
+          <li>Scrape, crawl, or harvest data from our website without prior written consent.</li>
+          <li>Use the website in any way that may impair its performance or disrupt other users' access.</li>
+        </ul>
+
+        <h2>3. Intellectual Property</h2>
+        <p>All content on this website — including text, graphics, logos, product names, icons, and software — is the property of AITS Genesis or its content suppliers and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.</p>
+
+        <h2>4. Products and Services</h2>
+        <p>Use of any AITS Genesis software products (Silence, Elma, Bonik, etc.) is subject to separate product-specific agreements and subscription terms presented at the point of sign-up. These Terms govern use of the marketing website only.</p>
+
+        <h2>5. Disclaimer of Warranties</h2>
+        <p>The website and its content are provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. AITS Genesis does not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+
+        <h2>6. Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, AITS Genesis shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, the website or services, even if we have been advised of the possibility of such damages.</p>
+
+        <h2>7. External Links</h2>
+        <p>Our website contains links to third-party websites and products. These links are provided for convenience only. AITS Genesis has no control over and accepts no responsibility for the content or practices of third-party sites.</p>
+
+        <h2>8. Indemnification</h2>
+        <p>You agree to indemnify and hold harmless AITS Genesis and its officers, employees, and agents from any claims, damages, or expenses (including reasonable legal fees) arising out of your use of the website or your violation of these Terms.</p>
+
+        <h2>9. Governing Law</h2>
+        <p>These Terms are governed by the laws of Bangladesh. Any disputes arising in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of Bangladesh.</p>
+
+        <h2>10. Modifications</h2>
+        <p>We reserve the right to modify these Terms at any time. Changes will be effective upon posting. Your continued use of the website after changes are posted constitutes your acceptance of the revised Terms.</p>
+
+        <h2>11. Contact</h2>
+        <p>For questions about these Terms, contact us at <a href="mailto:legal@aitsgenesis.com">legal@aitsgenesis.com</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

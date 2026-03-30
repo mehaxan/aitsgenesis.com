@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Icon from '../../components/Icon.astro';
+
+const entries = await getCollection('industries');
+const sorted = entries.sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<BaseLayout
+  title="Industries We Serve"
+  description="Industry-specific software solutions for education, healthcare, fintech, retail, logistics, manufacturing, real estate, and 10 more sectors."
+  activeNav="industries"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-50 via-teal-50/30 to-cyan-50/20 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Industries" }]} />
+      <div class="mt-6 max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">
+          Purpose-Built Solutions for Every Industry
+        </h1>
+        <p class="mt-4 text-xl text-slate-600 leading-relaxed">
+          We bring industry-specific domain knowledge to every engagement — understanding the regulations, workflows, and user expectations unique to your sector.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Grid -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+    <SectionHeader
+      eyebrow="Where We Work"
+      title="18+ Industries Served"
+      subtitle="From education and healthcare to fintech, manufacturing, and beyond — deep sector knowledge that informs every line of code we write."
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sorted.map(entry => {
+        const slug = entry.id.replace(/\.md$/, '');
+        return (
+          <a
+            href={`/industries/${slug}`}
+            class="group flex items-start gap-4 bg-white rounded-2xl border border-slate-200 p-6 hover:border-teal-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+          >
+            <div class="w-11 h-11 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-teal-100 transition-colors text-teal-700">
+              <Icon name={entry.data.icon} class="text-xl" />
+            </div>
+            <div>
+              <h2 class="font-display font-semibold text-slate-900 group-hover:text-teal-700 transition-colors mb-1">
+                {entry.data.title}
+              </h2>
+              <p class="text-sm text-slate-500 leading-relaxed line-clamp-2">
+                {entry.data.heroSubtitle}
+              </p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <CTASection
+    title="Your Industry Not Listed?"
+    subtitle="We love unique challenges. If your sector isn't listed, tell us about it — chances are we've built something adjacent and can help."
+    primaryLabel="Tell Us Your Challenge"
+    primaryHref="/contact"
+    secondaryLabel="Custom Solutions"
+    secondaryHref="/custom-solutions"
+  />
+</BaseLayout>

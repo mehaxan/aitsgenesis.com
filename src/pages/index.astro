@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Icon from '../components/Icon.astro';
+import { products, services, industries } from '../data/navigation';
+
+const featuredServices = services.slice(0, 6);
+
+const stats = [
+  { value: "500+", label: "Projects Delivered" },
+  { value: "6", label: "AI-powered Products" },
+  { value: "18+", label: "Industries Served" },
+  { value: "50+", label: "Expert Engineers" },
+];
+
+const serviceIcons: Record<string, string> = {
+  "web-development": "globe-alt",
+  "mobile-app-development": "device-phone-mobile",
+  "ui-ux-design": "pencil-square",
+  "dedicated-team": "user-group",
+  "software-development": "code-bracket-square",
+  "saas-development": "cloud",
+};
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AITS Genesis",
+  "url": "https://aitsgenesis.com",
+  "logo": "https://aitsgenesis.com/favicon.svg",
+  "description": "AITS Genesis is a software company that builds AI-powered products and custom technology solutions for enterprises, SMEs, and startups.",
+  "sameAs": [
+    "https://www.linkedin.com/company/aitsgenesis",
+    "https://twitter.com/aitsgenesis",
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "BD"
+  },
+};
+---
+<BaseLayout
+  title="AITS Genesis — Engineering Intelligent Software"
+  description="AITS Genesis builds AI-powered software products and custom technology solutions. 6 industry-specific AI products. 13 software services. 18+ industries served."
+  jsonLD={jsonLD}
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#EFF6FF_0%,_transparent_60%)]"></div>
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+      <svg viewBox="0 0 600 600" class="w-full h-full" fill="none">
+        <circle cx="300" cy="300" r="280" stroke="#2563EB" stroke-width="1"/>
+        <circle cx="300" cy="300" r="220" stroke="#2563EB" stroke-width="1"/>
+        <circle cx="300" cy="300" r="160" stroke="#2563EB" stroke-width="1"/>
+        <circle cx="300" cy="300" r="100" stroke="#2563EB" stroke-width="1"/>
+        <circle cx="300" cy="300" r="40" fill="#2563EB" fill-opacity="0.3"/>
+      </svg>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-28 md:pb-32">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-medium mb-6">
+          <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+          Engineering Intelligent Software
+        </div>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-slate-900 leading-[1.05] tracking-tight">
+          Build Smarter.<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Scale Faster.</span><br>
+          Transform Completely.
+        </h1>
+        <p class="mt-6 text-xl text-slate-600 leading-relaxed max-w-2xl">
+          AITS Genesis engineers AI-powered software products and custom technology solutions that help businesses go paperless, automate operations, and compete in a digital-first world.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <a href="/products" class="inline-flex items-center gap-2 px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20 text-sm">
+            Explore Our Products
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/contact" class="inline-flex items-center gap-2 px-7 py-3.5 border border-slate-300 text-slate-700 font-semibold rounded-xl hover:border-blue-400 hover:text-blue-600 transition-colors text-sm">
+            Get Free Consultation
+          </a>
+        </div>
+        <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <span class="text-sm text-slate-500">Trusted by companies in</span>
+          {["Banking", "Healthcare", "Education", "Retail", "Logistics"].map(ind => (
+            <span class="text-sm font-medium text-slate-600">{ind}</span>
+          ))}
+          <span class="text-sm text-slate-400">&amp; more</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="border-y border-slate-200 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map(s => (
+          <div class="text-center">
+            <p class="text-4xl font-display font-bold text-slate-900">{s.value}</p>
+            <p class="mt-1 text-sm text-slate-500">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUCTS ═══ -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Our Products"
+        title="Six AI-Powered Software Products"
+        subtitle="We don't just build for clients — we build industry-defining products of our own. Each product is a complete, AI-powered solution for a specific domain."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {products.map(p => <ProductCard {...p} />)}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/products" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors text-sm">
+          View all products and details
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section class="py-20 md:py-28 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="What We Build"
+        title="Services That Cover Your Entire Digital Journey"
+        subtitle="From initial design to production deployment and ongoing support — our 13 service offerings span the complete software development lifecycle."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {featuredServices.map(s => (
+          <ServiceCard
+            title={s.name}
+            description=""
+            icon={serviceIcons[s.slug] ?? "wrench"}
+            href={`/services/${s.slug}`}
+          />
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/services" class="inline-flex items-center gap-2 px-6 py-3 border border-slate-300 text-slate-700 font-semibold rounded-xl hover:border-blue-400 hover:text-blue-600 transition-colors text-sm">
+          See all 13 services
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERTISE ═══ -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Our Expertise"
+        title="Deep Knowledge in the Technologies That Matter"
+        subtitle="We invest deeply in emerging technologies so you benefit from practical expertise, not theoretical familiarity."
+      />
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {[
+          { icon: "sparkles", label: "Artificial Intelligence", href: "/expertise/artificial-intelligence" },
+          { icon: "cpu-chip", label: "Machine Learning", href: "/expertise/machine-learning" },
+          { icon: "chart-bar", label: "Data Science", href: "/expertise/data-science" },
+          { icon: "arrows-right-left", label: "Digital Transformation", href: "/expertise/digital-transformation" },
+          { icon: "cube-transparent", label: "Blockchain", href: "/expertise/blockchain" },
+          { icon: "wifi", label: "Internet of Things", href: "/expertise/internet-of-things" },
+          { icon: "eye", label: "Augmented Reality", href: "/expertise/augmented-reality" },
+          { icon: "viewfinder-circle", label: "Virtual Reality", href: "/expertise/virtual-reality" },
+        ].map(e => (
+          <a href={e.href} class="group flex flex-col items-center text-center gap-3 p-5 rounded-2xl border border-slate-200 bg-white hover:border-indigo-200 hover:bg-indigo-50/30 hover:shadow-sm transition-all">
+            <Icon name={e.icon} class="w-8 h-8 text-indigo-500 group-hover:text-indigo-700 transition-colors" />
+            <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-700 transition-colors">{e.label}</span>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/expertise" class="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-700 transition-colors text-sm">
+          Explore all expertise areas
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INDUSTRIES ═══ -->
+  <section class="py-20 md:py-28 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Industries We Serve"
+        title="Domain Expertise Across 18+ Sectors"
+        subtitle="Industry context matters. We bring domain knowledge that shortens ramp-up time and produces solutions your users actually recognise."
+      />
+      <div class="flex flex-wrap justify-center gap-2.5">
+        {industries.map(i => (
+          <a href={`/industries/${i.slug}`} class="px-4 py-2 bg-white border border-slate-200 text-slate-600 text-sm font-medium rounded-xl hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-all">
+            {i.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CUSTOM SOLUTIONS ═══ -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl px-8 py-14 md:px-14 md:py-16 flex flex-col md:flex-row items-center gap-8">
+        <div class="flex-1 text-center md:text-left">
+          <p class="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-2">Custom Solutions</p>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-white leading-tight">
+            Have a Unique Challenge?<br>We Build What Doesn't Exist Yet.
+          </h2>
+          <p class="mt-4 text-blue-100 leading-relaxed max-w-lg">
+            Not every business problem fits a product template. Our custom software practice delivers tailored solutions — from concept to deployment — built exactly for your context.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+          <a href="/custom-solutions" class="px-7 py-3.5 bg-white text-blue-700 font-semibold rounded-xl hover:bg-blue-50 transition-colors text-sm text-center">
+            Learn More
+          </a>
+          <a href="/contact" class="px-7 py-3.5 bg-blue-500/30 border border-white/30 text-white font-semibold rounded-xl hover:bg-blue-500/50 transition-colors text-sm text-center">
+            Discuss Your Project
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FINAL CTA ═══ -->
+  <CTASection
+    title="Ready to Build Something Extraordinary?"
+    subtitle="Let's talk about your goals. Whether you need a product, a team, or a strategy — we're ready to start."
+    primaryLabel="Start a Project"
+    primaryHref="/contact"
+    secondaryLabel="Explore Products"
+    secondaryHref="/products"
+  />
+</BaseLayout>

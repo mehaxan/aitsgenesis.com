@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('services');
+  return entries.map(entry => ({
+    params: { slug: entry.id.replace(/\.md$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const slug = entry.id.replace(/\.md$/, '');
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": entry.data.title,
+  "description": entry.data.metaDescription,
+  "provider": {
+    "@type": "Organization",
+    "name": "AITS Genesis",
+    "url": "https://aitsgenesis.com",
+  },
+};
+---
+<ContentLayout
+  title={entry.data.title}
+  metaDescription={entry.data.metaDescription}
+  heroTitle={entry.data.heroTitle}
+  heroSubtitle={entry.data.heroSubtitle}
+  icon={entry.data.icon}
+  features={entry.data.features}
+  technologies={entry.data.technologies}
+  activeNav="services"
+  jsonLD={jsonLD}
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: entry.data.title },
+  ]}
+>
+  <Content />
+</ContentLayout>
